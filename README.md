@@ -1,2 +1,2 @@
 # checksums
-Crypto algorithms in Nim
+Hash algorithms in Nim
