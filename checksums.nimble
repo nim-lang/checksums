@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "Nim Contributors"
-description   = "Crypto algorithms in Nim."
+description   = "Hash algorithms in Nim."
 license       = "MIT"
 srcDir        = "src"
 
