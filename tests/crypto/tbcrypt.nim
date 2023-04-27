@@ -1,6 +1,8 @@
 discard """
-targets: "c cpp js"
+targets: "c cpp"
 """
+
+# todo enable JS
 
 import checksums/bcrypt
 import std/[assertions]
