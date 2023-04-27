@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: [stable, devel]
+        branch: [devel]
         target:
           - os: linux
             cpu: amd64
