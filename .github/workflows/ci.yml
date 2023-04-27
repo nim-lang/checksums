@@ -1,4 +1,4 @@
-name: Fusion CI
+name: Checksums CI
 on: [push, pull_request]
 
 jobs:
