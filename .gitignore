@@ -1,0 +1,4 @@
+nimcache
+*.exe
+megatest.nim
+outputGotten.txt
