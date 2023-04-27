@@ -1,8 +1,6 @@
 discard """
-targets: "c cpp"
+targets: "c cpp js"
 """
-
-# todo enable JS
 
 import checksums/sha3
 import std/assertions

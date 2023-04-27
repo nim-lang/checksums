@@ -19,7 +19,8 @@ when defined(js):
 
   # >>> 0 discards all bits above the 32nd
   proc forceUnsigned*(x: uint32): uint32 {.importjs: "# >>> 0".}
-  proc forceUnsigned*(x: uint64): uint32 {.importjs: "# >>> 0".}
+  template forceUnsigned*(x: uint64): uint32 =
+    forceUnsigned(uint32(x))
 
   converter fromUint64*(x: uint64): CompatUint64 =
     when nimvm:
