@@ -3,3 +3,4 @@ nimcache
 megatest.nim
 outputGotten.txt
 *.js
+htmldocs
