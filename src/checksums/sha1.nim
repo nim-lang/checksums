@@ -6,6 +6,9 @@
 #    See the file "copying.txt", included in this
 #    distribution, for details about the copyright.
 #
+
+## .. note:: In order to use this module, run `nimble install checksums`.
+##
 ## [SHA-1 (Secure Hash Algorithm 1)](https://en.wikipedia.org/wiki/SHA-1)
 ## is a cryptographic hash function which takes an input and produces
 ## a 160-bit (20-byte) hash value known as a message digest.
