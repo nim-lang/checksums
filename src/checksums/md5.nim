@@ -7,6 +7,8 @@
 #    distribution, for details about the copyright.
 #
 
+## .. note:: In order to use this module, run `nimble install checksums`.
+##
 ## Module for computing [MD5 checksums](https://en.wikipedia.org/wiki/MD5).
 ##
 ## Be aware that using MD5 for cryptographic purposes is *strongly* discouraged as
