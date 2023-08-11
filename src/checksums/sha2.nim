@@ -337,7 +337,7 @@ proc shaUpdate[T; n, r: static int](
     if ctx.datalen == n:
       ctx.shaTransform()
 
-      inc ctx.bitlen, uint64(n * 8)
+      ctx.bitlen += uint64(n * 8)
       ctx.datalen = 0
 
 proc shaFinalize[T; n, r: static int](
@@ -350,7 +350,7 @@ proc shaFinalize[T; n, r: static int](
   ctx.data[ctx.datalen] = 0x80
   ctx.data.fill(ctx.datalen + 1, ctx.data.high, 0)
 
-  inc ctx.bitlen, uint64(ctx.datalen * 8)
+  ctx.bitlen += uint64(ctx.datalen * 8)
 
   # If writing the end marker caused the block to fill up
   # enough so that we can't write the total bit length, we
