@@ -110,7 +110,7 @@ jobs:
         run: testament all
 
       - name: Build docs
-        if: matrix.branch == 'devel'
+        if: matrix.branch == 'master'
         run: nimble docs
 
       - name: Deploy docs
@@ -120,7 +120,7 @@ jobs:
         if: |
           github.event_name == 'push' && github.ref == 'refs/heads/master' &&
           matrix.target.os == 'linux' && matrix.target.cpu == 'amd64' &&
-          matrix.branch == 'devel'
+          matrix.branch == 'master'
         uses: crazy-max/ghaction-github-pages@v2
         with:
           build_dir: checksums/htmldocs
