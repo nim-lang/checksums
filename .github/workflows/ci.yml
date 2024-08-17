@@ -27,7 +27,7 @@ jobs:
             builder: ubuntu-latest
           - target:
               os: macos
-            builder: macos-latest
+            builder: macos-12
           - target:
               os: windows
             builder: windows-latest
