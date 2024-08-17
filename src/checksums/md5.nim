@@ -107,7 +107,7 @@ proc decode(dest: var openArray[uint8], src: openArray[uint32]) =
 
 template slice(s: cstring, a, b): openArray[uint8] =
   when nimvm:
-    toOpenArrayByte(s, a, b)
+    toOpenArrayByte($s, a, b)
   else:
     when defined(js):
       # toOpenArrayByte for cstring is not implemented in JS
