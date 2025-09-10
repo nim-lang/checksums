@@ -110,7 +110,7 @@ jobs:
         run: testament all
 
       - name: Build docs
-        if: matrix.branch == 'master'
+        if: github.ref == 'refs/heads/master'
         run: nimble docs
 
       - name: Deploy docs
@@ -119,8 +119,8 @@ jobs:
         # and remove `github.ref == 'refs/heads/master'` below
         if: |
           github.event_name == 'push' && github.ref == 'refs/heads/master' &&
-          matrix.target.os == 'linux' && matrix.target.cpu == 'amd64' &&
-          matrix.branch == 'master'
+          matrix.target.os == 'linux' && matrix.target.cpu == 'amd64'
+
         uses: crazy-max/ghaction-github-pages@v4
         with:
           build_dir: checksums/htmldocs
