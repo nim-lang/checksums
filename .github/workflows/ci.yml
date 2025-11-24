@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v6
       - name: Checkout checksums
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: checksums
 
