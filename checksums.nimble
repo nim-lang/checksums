@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.2.1"
+version       = "0.2.2"
 author        = "Nim Contributors"
 description   = "Hash algorithms in Nim."
 license       = "MIT"
