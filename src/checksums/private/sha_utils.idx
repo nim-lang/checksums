@@ -1,0 +1,3 @@
+nimTitle	sha_utils	src/checksums/private/sha_utils.html	module src/checksums/private/sha_utils		0
+nim	CompatUint64	src/checksums/private/sha_utils.html#CompatUint64	type CompatUint64		122
+nim	`$`	src/checksums/private/sha_utils.html#$,array[n,char]	proc `$`[n: static[int]](digest: array[n, char]): string		124
