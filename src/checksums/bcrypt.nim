@@ -187,6 +187,9 @@ const
 
   nullSalt = [0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8, 0'u8]
 
+  maxPasswordLen = 72
+    ## bcrypt truncates passwords to this many bytes before hashing.
+
 type
   CostFactor* = range[4..31]
     ## Adjustable cost factor. The value is a logarithm of 2, which means that
@@ -444,11 +447,11 @@ proc bcrypt*(password: openArray[char]; salt: Salt): SaltedHash =
   runnableExamples:
     let hashed = bcrypt("correct horse battery stape", generateSalt(8))
 
-  var passwordNul: array[72, uint8]
+  var passwordNul: array[maxPasswordLen + 1, uint8] # + 1 for the trailing NUL
   var actLen: int
 
   if salt.subversion in {'b', 'y'}:
-    actLen = min(72, password.len)
+    actLen = min(maxPasswordLen, password.len)
   else:
     # Replicate the OpenBSD uint8_t truncation bug
     actLen = (password.len) mod 256
@@ -459,8 +462,10 @@ proc bcrypt*(password: openArray[char]; salt: Salt): SaltedHash =
   else:
     copyMem(addr passwordNul[0], addr password[0], actLen)
 
-  if actLen != 72:
-    passwordNul[actLen] = 0x00
+  # The key material is the password bytes plus a trailing NUL. `passwordNul` is
+  # sized at maxPasswordLen + 1 so this is always in bounds, even for a
+  # maximum-length password.
+  passwordNul[actLen] = 0x00
 
   var ctx = initBcryptState(salt, passwordNul[0..actLen])
   var offset = 0
