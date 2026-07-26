@@ -3,7 +3,7 @@ targets: "c cpp js"
 """
 
 import checksums/bcrypt
-import std/[assertions]
+import std/[assertions, strutils]
 
 const
   # In case the test turns out to take too much time, this factor can be turned down.
@@ -248,3 +248,12 @@ block: # Test against python-bcrypt
 
     if salt.costFactor <= roundLimit:
       doAssert verify(input, hash)
+
+block: 
+  # A maximum-length (72 byte) password must hash correctly.
+  # Reference hash generated with Apache htpasswd (crypt_blowfish, `$2y`):
+  #   htpasswd -nbBC 5 user "$(python3 -c 'print("A"*72,end="")')"
+  let maxLen = 72
+  let maxPassword = "A".repeat(maxLen)
+  let knownGood = "$2y$05$Zc9KzxgnO6Ge5pfQXApvFekRz46bBcoqG9O9JlFlMEFg9bGiIfEvm"
+  doAssert verify(maxPassword, knownGood)
