@@ -13,7 +13,7 @@ when defined(js):
     # a single uint64 as a combination of a high and low uint32. BigInts are a possibility
     # but they are annoying in the sense that they don't play well well in `const`s and
     # the fact that array[JsBigInt; N] turns into Uint32Array, which doesn't work.
-    CompatUint64* {.packed.} = tuple
+    CompatUint64* = tuple
       lo: uint32
       hi: uint32
 
